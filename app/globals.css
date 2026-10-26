@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: "Anton", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --color-bg-base: #0f0d0c;
+  --color-bg-elevated: #19140f;
+  --color-bg-elevated-2: #241c16;
+  --color-border-hair: #332621;
+  --color-accent: #e1382b;
+  --color-accent-dim: #8c231a;
+  --color-accent-bright: #ff5b45;
+  --color-text-primary: #f3efe6;
+  --color-text-muted: #9b958a;
+  --color-text-faint: #5e5a52;
+}
+
+body {
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.dial-fill {
+  stroke-dasharray: 327;
+  animation: fillDial 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+@keyframes fillDial {
+  from { stroke-dashoffset: 327; }
+  to { stroke-dashoffset: var(--dial-offset, 20); }
+}
