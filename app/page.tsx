@@ -1,14 +1,9 @@
 import Link from "next/link";
 import MatchDial from "@/components/MatchDial";
-
-const buddyPreview = [
-  { name: "Lucas M.", meta: "Intermédiaire · Club Nord", score: 94, tags: ["Musculation", "Crossfit", "Lun 18h-20h"] },
-  { name: "Emma R.", meta: "Intermédiaire · Club Nord", score: 81, tags: ["Cardio", "Musculation", "Mer 07h-08h"] },
-  { name: "Yanis K.", meta: "Avancé · Club Nord", score: 76, tags: ["Musculation", "Lun 19h-21h"] },
-];
+import BuddyList from "@/components/BuddyList";
 
 const btnPrimary =
-  "rounded-full bg-accent px-6 py-3 font-semibold text-sm text-on-accent hover:bg-accent-bright transition-colors";
+  "rounded-full bg-accent px-6 py-3 font-semibold text-sm text-on-accent hover:bg-accent-bright transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 export default function LandingPage() {
   return (
@@ -75,34 +70,11 @@ export default function LandingPage() {
       </section>
 
       <section id="buddies" className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="max-w-xl mb-10">
+        <div className="max-w-xl mb-8">
           <h2 className="font-display text-4xl mb-3">Tes Buddies compatibles</h2>
           <p className="text-text-muted text-sm">Classés par score dans ton club.</p>
         </div>
-        <div className="grid md:grid-cols-3 gap-5">
-          {buddyPreview.map((b) => (
-            <div key={b.name} className="flex flex-col rounded-carte border border-border-hair bg-bg-elevated p-6 hover:border-accent-dim hover:-translate-y-1 transition-all">
-              <div className="flex justify-between items-center mb-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-bg-elevated-2 font-display text-base">
-                  {b.name[0]}
-                </div>
-                <span className="rounded-full bg-lime px-3.5 py-1.5 font-display text-2xl leading-none text-accent">
-                  {b.score}%
-                </span>
-              </div>
-              <h4 className="font-display text-[17px] mb-1">{b.name}</h4>
-              <p className="text-xs text-text-faint mb-3.5">{b.meta}</p>
-              <div className="flex flex-wrap gap-1.5 mb-5">
-                {b.tags.map((t) => (
-                  <span key={t} className="rounded-full border border-border-hair px-2.5 py-1 text-[11px] text-text-muted">{t}</span>
-                ))}
-              </div>
-              <Link href="/login" className="mt-auto rounded-full border border-accent px-4 py-2 text-center text-sm font-semibold text-accent hover:bg-accent hover:text-on-accent transition-colors">
-                Inviter →
-              </Link>
-            </div>
-          ))}
-        </div>
+        <BuddyList />
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-24">
@@ -118,7 +90,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-6 flex flex-wrap justify-between items-center gap-4">
           <span className="font-mono text-xs text-text-faint">BUDDY — PROTOTYPE · CÉSAR TOUKO SANAMA</span>
           <div className="flex gap-5 text-sm text-text-muted">
-            <a href="mailto:cetoukosanama@gmail.com" className="hover:text-text-primary">Contact</a>
+            <a href="mailto:cetoukosanama@gmail.com" className="font-bold text-text-primary hover:text-accent-bright transition-colors">Contact</a>
             <a href="https://github.com/Touko74/buddy" target="_blank" rel="noreferrer" className="hover:text-text-primary">GitHub</a>
           </div>
         </div>
